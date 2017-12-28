@@ -1,0 +1,8 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - gradle build
+      - aws s3 sync build/libs/ s3://$GRADLE_IVY_BUCKET/gradle/
+

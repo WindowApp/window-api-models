@@ -1,0 +1,10 @@
+syntax = "proto3";
+package codes.rik.window.api.post;
+
+message SubmitPostRequest {
+    string foo = 1;
+}
+
+message GetGameResponse {
+    string bar = 1;
+}
