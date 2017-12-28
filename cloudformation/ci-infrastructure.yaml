@@ -35,10 +35,10 @@ Resources:
 
   # Actual Gradle Ivy repo (TODO: probably should be created by something else?)
   GradleRepoBucket:
-    BucketName: window-artifacts-repo
     Type: AWS::S3::Bucket
     DeletionPolicy: Delete
     Properties:
+      BucketName: window-artifacts-repo
       AccessControl: Private
 
   ###
