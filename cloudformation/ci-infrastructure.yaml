@@ -16,7 +16,7 @@ Parameters:
   GitHubRepo:
     Type: String
     Description: GitHub git repo.
-    Default: window-post-api-lambdas
+    Default: window-api-models
   GitHubBranch:
     Type: String
     Description: Git branch to build off of.
@@ -34,7 +34,8 @@ Resources:
         Status: Suspended
 
   # Actual Gradle Ivy repo (TODO: probably should be created by something else?)
-  GradleIvyBucket:
+  GradleRepoBucket:
+    BucketName: window-artifacts-repo
     Type: AWS::S3::Bucket
     DeletionPolicy: Delete
     Properties:
@@ -184,8 +185,8 @@ Resources:
         EnvironmentVariables:
           - Name: BUILD_ARTIFACT_BUCKET
             Value: !Ref DeploymentArtifactBucket
-          - Name: GRADLE_IVY_BUCET
-            Value: !Ref GradleIvyBucket
+          - Name: GRADLE_REPO_BUCET
+            Value: !Ref GradleRepoBucket
       Source:
         Type: CODEPIPELINE
       TimeoutInMinutes: 10

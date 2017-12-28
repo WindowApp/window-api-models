@@ -4,5 +4,5 @@ phases:
   build:
     commands:
       - gradle build
-      - aws s3 sync build/libs/ s3://$GRADLE_IVY_BUCKET/gradle/
+      - aws s3 sync build/libs/ s3://$GRADLE_REPO_BUCKET/gradle-ivy/
 
