@@ -3,16 +3,6 @@ import com.amazonaws.auth.*
 group 'codes.rik.window'
 version '0.1'
 
-def fetchAwsCredentials = {
-    try {
-        return new DefaultAWSCredentialsProviderChain().credentials
-    } catch (Exception exception) {
-        logger.warn('Unable to retrieve AWS credentials from profile')
-        return null
-    }
-}
-
-
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 
@@ -21,9 +11,6 @@ sourceCompatibility = 1.8
 buildscript {
     repositories {
         mavenCentral()
-    }
-    dependencies {
-        classpath 'com.amazonaws:aws-java-sdk-core:1.11.5'
     }
 }
 
@@ -34,24 +21,7 @@ repositories {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId 'codes.rik.window'
-            artifactId 'api-models'
-            version '0.1'
             from components.java
-        }
-    }
-
-    repositories {
-        def defaultCredentials = fetchAwsCredentials()
-        if (defaultCredentials != null) {
-            logger.info("Got AWS credentials, adding S3 repo")
-            maven {
-                url "s3://window-artifacts-repo/maven"
-                credentials(AwsCredentials) {
-                    accessKey defaultCredentials.getAWSAccessKeyId()
-                    secretKey defaultCredentials.getAWSSecretKey()
-                }
-            }
         }
     }
 }
