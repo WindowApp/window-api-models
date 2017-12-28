@@ -185,7 +185,7 @@ Resources:
         EnvironmentVariables:
           - Name: BUILD_ARTIFACT_BUCKET
             Value: !Ref DeploymentArtifactBucket
-          - Name: GRADLE_REPO_BUCET
+          - Name: GRADLE_REPO_BUCKET
             Value: !Ref GradleRepoBucket
       Source:
         Type: CODEPIPELINE
