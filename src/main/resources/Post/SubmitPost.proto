@@ -5,6 +5,6 @@ message SubmitPostRequest {
     string foo = 1;
 }
 
-message GetGameResponse {
+message SubmitPostResponse {
     string bar = 1;
 }
