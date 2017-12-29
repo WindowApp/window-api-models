@@ -1,0 +1,12 @@
+syntax = "proto3";
+package codes.rik.window.api.post;
+
+message CreatePostRequest {
+    string foo = 1;
+}
+
+message CreatePostResponse {
+    string postId = 1;
+    string uploadUrl = 2;
+    uint64 uploadExpirationTime = 3;
+}
